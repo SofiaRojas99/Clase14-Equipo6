@@ -7,9 +7,13 @@ const Personaje = () => {
     const url = 'https://thronesapi.com/api/v2/Characters'
 
     useEffect(() => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => setPersonaje(data))
+      const fetchData = async () => {
+        let response = await fetch(url)
+        let data = await response.json()
+        console.log(data)
+        setPersonaje(data)
+      } 
+      fetchData()
     }, [cambiarPersonaje])
    
     console.log(personaje)
